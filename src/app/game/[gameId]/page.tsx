@@ -1,29 +1,34 @@
-"use client";
+export async function generateStaticParams() {
+  // const posts = await fetch('https://.../posts').then((res) => res.json())
 
-import { useEffect, useState } from "react";
-import { notFound, useParams } from "next/navigation";
-import { GameParams } from "@/types";
+  const gamesIds = [{ gameId: "333" }];
 
-const fetchGame = async (gameId: string) => {
-  return { name: "test", id: "17" };
-};
+  return gamesIds;
+  // return posts.map((post) => ({
+  //   slug: post.slug,
+  // }))
+}
 
-export default function GamePage() {
-  const [loading, setLoading] = useState(true);
-  const { gameId } = useParams() as GameParams;
+export default async function GamePage({
+  params,
+}: {
+  params: Promise<{ gameId: string }>;
+}) {
+  const { gameId } = await params;
+  // const { gameId } = useParams() as GameParams;
 
-  if (!gameId) return notFound();
+  // console.log("Game ID :", gameId);
+  // const game = await fetchGameFromServer();
 
-  console.log("Game ID :", gameId);
-  // const game = await fetchGameFromServer(gameId);
+  // useEffect(() => {
+  //   setLoading(true);
 
-  useEffect(() => {
-    setLoading(true);
+  //   fetchGame(gameId);
 
-    fetchGame(gameId);
+  //   setLoading(false);
+  // }, [gameId]);
 
-    setLoading(false);
-  }, [gameId]);
+  // if (!gameId) return notFound();
 
-  return <div>HI GAME with ID </div>;
+  return <div>HI GAME with ID: {gameId} </div>;
 }
