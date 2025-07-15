@@ -18,7 +18,7 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 ## TODO
 
-- Add Radix UI
+- Add Radix UIgit
 
 To learn more about Next.js, take a look at the following resources:
 
