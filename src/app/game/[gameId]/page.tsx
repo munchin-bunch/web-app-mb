@@ -1,4 +1,6 @@
-"use client";
+export const dynamic = "force-dynamic";
+
+("use client");
 
 import { useEffect, useState } from "react";
 import { notFound, useParams } from "next/navigation";
@@ -12,8 +14,6 @@ export default function GamePage() {
   const [loading, setLoading] = useState(true);
   const { gameId } = useParams() as GameParams;
 
-  if (!gameId) return notFound();
-
   console.log("Game ID :", gameId);
   // const game = await fetchGameFromServer(gameId);
 
@@ -24,6 +24,7 @@ export default function GamePage() {
 
     setLoading(false);
   }, [gameId]);
+  if (!gameId) return notFound();
 
   return <div>HI GAME with ID </div>;
 }
