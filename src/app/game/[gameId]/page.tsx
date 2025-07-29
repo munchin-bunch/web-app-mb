@@ -1,12 +1,12 @@
+import { mockCurrentGames, mockPreviousGames } from "@/mocks";
+
 export async function generateStaticParams() {
   // const posts = await fetch('https://.../posts').then((res) => res.json())
+  const gamesIdsT = [...mockCurrentGames, ...mockPreviousGames];
 
-  const gamesIds = [{ gameId: "333" }];
-
-  return gamesIds;
-  // return posts.map((post) => ({
-  //   slug: post.slug,
-  // }))
+  return gamesIdsT.map((game) => ({
+    gameId: game.id,
+  }));
 }
 
 export default async function GamePage({
@@ -15,18 +15,6 @@ export default async function GamePage({
   params: Promise<{ gameId: string }>;
 }) {
   const { gameId } = await params;
-  // const { gameId } = useParams() as GameParams;
-
-  // console.log("Game ID :", gameId);
-  // const game = await fetchGameFromServer();
-
-  // useEffect(() => {
-  //   setLoading(true);
-
-  //   fetchGame(gameId);
-
-  //   setLoading(false);
-  // }, [gameId]);
 
   return <div>HI GAME with ID: {gameId} </div>;
 }
