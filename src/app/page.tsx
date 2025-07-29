@@ -1,17 +1,13 @@
-import { compileBaseUrl } from "@/utils/compileBaseUrl";
-import Image from "next/image";
+// import { compileBaseUrl } from "@/utils/compileBaseUrl";
+// import Image from "next/image";
+import { FaceIcon, ImageIcon, SunIcon } from "@radix-ui/react-icons";
+import { Popover } from "radix-ui";
 
 export default function Home() {
   console.log("IS ENV :", process.env.NODE_ENV);
 
   return (
-    // <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center  p-8 pb-20 gap-16 sm:p-20">
-    //   <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-    //     <h2 className="font-white">{compileBaseUrl()}</h2>
-    //   </main>
-    // </div>
-
-    <div className=" p-6 ">
+    <div className=" ">
       <h2>Dashboard</h2>
     </div>
   );

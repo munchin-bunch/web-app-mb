@@ -28,7 +28,5 @@ export default async function GamePage({
   //   setLoading(false);
   // }, [gameId]);
 
-  // if (!gameId) return notFound();
-
   return <div>HI GAME with ID: {gameId} </div>;
 }

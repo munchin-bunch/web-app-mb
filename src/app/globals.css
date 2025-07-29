@@ -3,6 +3,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --bluePrimary: #86b1fe;
+  --darkPrimary: #101938;
+  --grayPrimary: #969696;
+  --pinkPrimary: #f600b0;
 }
 
 @theme inline {
@@ -10,11 +15,16 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-blue-primary: var(--bluePrimary);
+  --color-dark-primary: var(--darkPrimary);
+  --color-gray-primary: var(--grayPrimary);
+  --color-pink-primary: var(--pinkPrimary);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #101938;
     --foreground: #ededed;
   }
 }
