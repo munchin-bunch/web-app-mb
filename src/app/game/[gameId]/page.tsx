@@ -1,3 +1,4 @@
+import { GameBox } from "@/components/GameBox";
 import { mockCurrentGames, mockPreviousGames } from "@/mocks";
 
 export async function generateStaticParams() {
@@ -9,12 +10,18 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function GamePage({
-  params,
-}: {
-  params: Promise<{ gameId: string }>;
-}) {
+interface GamePageProps {
+  params:  Promise<{ gameId: string }>
+}
+
+
+export default async function GamePage({ params }: GamePageProps) {
   const { gameId } = await params;
 
-  return <div>HI GAME with ID: {gameId} </div>;
+  return (
+    <>
+      {/* <div>HI GAME with ID: {gameId} </div> */}
+      <GameBox gameId={gameId} />
+    </>
+  );
 }

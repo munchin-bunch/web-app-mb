@@ -1,0 +1,1 @@
+export const shortAddr = (address: string | undefined, start = 6, end = 6): string => (address && address.length > 30) ? `${address.substring(0, start)}...${address.substring(address.length - end)}` : ''

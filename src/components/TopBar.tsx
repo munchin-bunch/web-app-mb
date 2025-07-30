@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { Button } from "./shared";
 import { ConnectWallet } from "./ConnectWallet";
+import { AbsAccount } from "./AbsAccount";
 
-const CONNECT_WALLET = " Connect Wallet";
+// const CONNECT_WALLET = " Connect Wallet";
 const APP_NAME = "Phat Puff";
 
 export function TopBar() {
@@ -13,7 +13,9 @@ export function TopBar() {
           {APP_NAME}
         </h1>
       </Link>
-      <ConnectWallet />
+      <AbsAccount>
+        <ConnectWallet />
+      </AbsAccount>
     </header>
   );
 }
