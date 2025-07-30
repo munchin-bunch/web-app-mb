@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Phat Puff",
   description: "Munchin Bunch - Phat Puff th best game on Abstract chain",
+  icons: {
+    icon: "/favicon.jpg", // <-- path from public/
+  },
 };
 
 export default function RootLayout({
