@@ -2,9 +2,9 @@
 import { chain } from "@/constants/chain"
 import { useQuery } from "@tanstack/react-query"
 import { Address, createPublicClient, http, parseAbi } from "viem"
-import abi from "@/abis/MunchinGameMini.json"
 import { GameBet } from "@/types/GameSetting"
 import { fromUsdt } from "@/utils/number"
+import abi from "@/abis/game.abi.json"
 
 export const useGameBet = (address?: string) => {
   const client = createPublicClient({ chain, transport: http("") })
@@ -23,7 +23,7 @@ export const useGameBet = (address?: string) => {
           abi: parseAbi(abi)
         }
 
-        const [betAmount, prizePool] = await Promise.all([
+        const [betAmount, prizePool, nextBetAt] = await Promise.all([
           client.readContract({
             ...contractConfig,
             functionName: 'getBetAmount',
@@ -31,12 +31,17 @@ export const useGameBet = (address?: string) => {
           client.readContract({
             ...contractConfig,
             functionName: 'prizePool',
-          })        
+          }),
+          client.readContract({
+            ...contractConfig,
+            functionName: 'nextBetAt',
+          })          
         ])
 
         return {
           betAmount: fromUsdt(betAmount as bigint),
-          prizePool: fromUsdt(prizePool as bigint)
+          prizePool: fromUsdt(prizePool as bigint),
+          nextBetAt: nextBetAt
         } as GameBet
 
       } catch(e) {

@@ -1,27 +1,32 @@
 "use client"
 
-import { useAbstractClient } from "@abstract-foundation/agw-react"
+import { useAbstractClient, useGlobalWalletSignerClient } from "@abstract-foundation/agw-react"
 import { useMutation } from "@tanstack/react-query"
-import { parseAbi } from "viem"
+import { Address, parseAbi } from "viem"
 import abi from "@/abis/MunchinGameMini.json"
 
-export const useGame = () => {
+export const useGame = (gameAddr?: string) => {
 
-  const { data: client } = useAbstractClient()
+  const { data: client } = useGlobalWalletSignerClient()
 
   const bet = useMutation({
-    mutationKey: [`deploy`],
-    mutationFn: async() => {
+    mutationKey: [`bet`],
+    mutationFn: async({ nftId, amount, refAddr }: any) => {
       if (!client) return
 
-      const txHash = await client.writeContract({
-        abi: parseAbi(abi),
-        address: "0xbc017649a57f29329c8d401ac3529edf29da2766",
-        functionName: "bet",
-        args: [],
-      })
+      try {
+        const txHash = await client.writeContract({
+          abi: parseAbi(abi),
+          address: gameAddr as Address,
+          functionName: "bet",
+          args: [nftId, amount, refAddr],
+        })
 
-      return txHash
+        return txHash
+
+      } catch(e) {
+        console.log("BET FAILED", e)
+      }
 
     }
   })

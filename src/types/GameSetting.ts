@@ -8,5 +8,6 @@ export type GameSetting = {
 
 export type GameBet = {
   betAmount: string | number,
-  prizePool: string | number
+  prizePool: string | number,
+  nextBetAt: string | number
 }

@@ -2,14 +2,18 @@
 import { useGameSetting } from "@/hooks/useGameSetting"
 import { Button } from "./shared"
 import { useGameBet } from "@/hooks/useGameBet"
+import { BetButton } from "./BetButton"
 
 interface GameBoxProps {
   gameId?: number | string,
 }
 
 export const GameBox = ({ gameId }: GameBoxProps) => {
+  const gameAddr = "0xbc017649a57f29329c8d401ac3529edf29da2766"
   // const { data: setting } = useGameSetting("0xbc017649a57f29329c8d401ac3529edf29da2766")
-  const { data: bet } = useGameBet("0xbc017649a57f29329c8d401ac3529edf29da2766")
+  const { data: bet } = useGameBet(gameAddr)
+
+
 
   return (
     <div className="border-1 border-pink-primary rounded-sm">
@@ -46,10 +50,10 @@ export const GameBox = ({ gameId }: GameBoxProps) => {
       <div className="flex px-4">
         <div>LEARN BEFORE YOU MUNCH</div>
         <div className="flex-grow" />
-        <div>TIME REMAINING: </div>
+        <div>TIME REMAINING: {bet?.nextBetAt}</div>
       </div>
       <div className="p-4">
-        <Button className="bg-pink-primary w-full text-black font-bold text-xl">Munch It</Button>
+        <BetButton gameAddr={gameAddr} />
       </div>
     </div>
   )
