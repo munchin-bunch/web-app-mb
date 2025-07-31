@@ -1,9 +1,6 @@
 "use client"
 
 import { useQuery } from "@tanstack/react-query"
-import { useState } from "react"
-import store from "store"
-
 // store.get(`@bettors-${gameAddr}`, [])
 
 export const useBettors = (gameAddr?: string) => {

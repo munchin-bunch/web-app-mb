@@ -1,6 +1,6 @@
 "use client"
 
-import { useAbstractClient, useGlobalWalletSignerClient } from "@abstract-foundation/agw-react"
+import { useGlobalWalletSignerClient } from "@abstract-foundation/agw-react"
 import { useMutation } from "@tanstack/react-query"
 import { Address, parseAbi } from "viem"
 import abi from "@/abis/MunchinGameMini.json"
@@ -11,6 +11,7 @@ export const useGame = (gameAddr?: string) => {
 
   const bet = useMutation({
     mutationKey: [`bet`],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     mutationFn: async({ nftId, amount, refAddr }: any) => {
       if (!client) return
 

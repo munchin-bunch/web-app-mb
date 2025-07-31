@@ -2,15 +2,15 @@
 
 import { useMutation } from "@tanstack/react-query"
 import { Address, parseAbi } from "abitype"
-import { useGlobalWalletSignerAccount, useGlobalWalletSignerClient } from "@abstract-foundation/agw-react"
+import { useGlobalWalletSignerClient } from "@abstract-foundation/agw-react"
 import abi from "@/abis/usd.abi.json"
 
 export const useUsd = (usdAddr: string | Address) => {
-  const { address } = useGlobalWalletSignerAccount()
   const { data: client } = useGlobalWalletSignerClient()
 
   const approve = useMutation({
     mutationKey: [`usd-approve`],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     mutationFn: async({ spender, amount }: any) => {
 
       console.log("BET AMOUNT", spender, amount)

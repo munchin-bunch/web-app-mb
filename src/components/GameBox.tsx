@@ -1,6 +1,4 @@
 "use client"
-import { useGameSetting } from "@/hooks/useGameSetting"
-import { Button } from "./shared"
 import { useGameBet } from "@/hooks/useGameBet"
 import { BetButton } from "./BetButton"
 

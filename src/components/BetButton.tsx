@@ -1,7 +1,6 @@
 "use client"
 import { useUsd } from "@/hooks/useUsd"
 import { Button } from "./shared"
-import { useGameBet } from "@/hooks/useGameBet"
 import { Address } from "abitype"
 import { usdAddr } from "@/constants/chain"
 import { useGlobalWalletSignerAccount } from "@abstract-foundation/agw-react"
@@ -32,10 +31,11 @@ export const BetButton = ({ gameAddr }: BetButtonProps) => {
     mutationKey: [`user-bet`],
     mutationFn: async() => {
 
-      // let _betAmount = betAmount || 0
-      // let _spender = gameAddr as Address
+      const _betAmount = betAmount || 0
+      // const _spender = gameAddr as Address
+      const _allowance = allowance || 0
 
-      if (betAmount > allowance) {
+      if (_betAmount > _allowance) {
         await usd.approve.mutateAsync({ spender: gameAddr, amount: betAmount })
       }
       

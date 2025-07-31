@@ -1,12 +1,13 @@
 import { useEffect, DependencyList } from "react"
 
-export const useDebounceEffect = (fn: Function, duration: number, deps: DependencyList) => {
+// @typescript-eslint/no-unsafe-function-type
+export const useDebounceEffect = (fn: () => void, duration: number, deps: DependencyList) => {
   useEffect(() => {
     const t = setTimeout(() => {
-      fn.apply(undefined, deps)
+      fn.apply(undefined, [])
     }, duration)
     return () => {
       clearTimeout(t)
     }
-  }, deps)
+  }, [...deps])
 }

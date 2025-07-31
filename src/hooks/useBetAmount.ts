@@ -1,7 +1,7 @@
 "use client"
-import { chain, rpcClient } from "@/constants/chain"
+import { rpcClient } from "@/constants/chain"
 import { useQuery } from "@tanstack/react-query"
-import { Address, createPublicClient, http, parseAbi } from "viem"
+import { Address, parseAbi } from "viem"
 import abi from "@/abis/game.abi.json"
 
 export const useBetAmount = (gameAddr?: string) => {
