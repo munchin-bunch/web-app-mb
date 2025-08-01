@@ -7,14 +7,15 @@ interface TimeRemainingProps {
 }
 
 export const Timer = ({ label, gameAddr }: TimeRemainingProps) => {
-  const { data: nextBetAt } = useNextBetAt(gameAddr)
+  const { data = "0" } = useNextBetAt(gameAddr)
+  const nextBetAt = parseInt(data)
 
-  console.log("NEXT BET AT", parseInt(nextBetAt))
+  console.log("NEXT BET AT", nextBetAt)
 
   return (
     <div className="flex gap-2">
       <div>{label}</div>
-      <Countdown unixTimestamp={parseInt(nextBetAt)} />
+      { nextBetAt > 0 && <Countdown timestamp={nextBetAt} /> }
     </div>
   )
 }

@@ -16,7 +16,7 @@ export const useUsdBalance = (usdAddr?: string, account?: string) => {
         address: usdAddr as Address,
         functionName: "balanceOf",
         args: [account]
-      })
+      }) as string
     }
   })
 }

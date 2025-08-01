@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 
-export const Countdown = ({ unixTimestamp }: { unixTimestamp: number }) => {
+interface CountdownProps {
+  timestamp?: number,
+  className?: string
+}
+
+export const Countdown = ({ timestamp = 0, className = '' }: CountdownProps) => {
   const [timeRemaining, setTimeRemaining] = useState('');
 
   useEffect(() => {
     const interval = setInterval(() => {
       const now = Math.floor(Date.now() / 1000); // Get current time in seconds
-      const difference = unixTimestamp - now;
+      const difference = timestamp - now;
 
       if (difference <= 0) {
         setTimeRemaining('00:00:00');
@@ -29,11 +34,11 @@ export const Countdown = ({ unixTimestamp }: { unixTimestamp: number }) => {
 
     // Cleanup function to clear the interval when the component unmounts
     return () => clearInterval(interval);
-  }, [unixTimestamp]);
+  }, [timestamp]);
 
   return (
-    <div>
+    <div className={className}>
       {timeRemaining}
     </div>
-  );
-};
+  )
+}

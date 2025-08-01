@@ -9,15 +9,12 @@ export const useUsdAllowance = (usdAddr?: string, account?: string, spender?: st
     enabled: !!(account && spender),
     queryKey: [`usd-allowance`, usdAddr, account, spender],
     queryFn: async() => {
-
-      console.log("ALLOWANCE", usdAddr, account, spender)
-
       return await rpcClient.readContract({
         abi: parseAbi(abi),
         address: usdAddr as Address,
         functionName: "allowance",
         args: [account, spender]
-      })
+      }) as string
     }
   })
 }

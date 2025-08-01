@@ -9,11 +9,11 @@ export const useBetAmount = (gameAddr?: string) => {
     enabled: !!gameAddr,
     queryKey: [`bet-amount`],
     queryFn: async() => {
-      return rpcClient.readContract({
+      return await rpcClient.readContract({
         abi: parseAbi(abi),
         address: gameAddr as Address,
         functionName: "getBetAmount",
-      })
+      }) as string
     }
   })
 }

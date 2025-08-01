@@ -9,16 +9,11 @@ export const useNextBetAt = (gameAddr?: string) => {
     enabled: !!gameAddr,
     queryKey: [`next-bet-at`],
     queryFn: async() => {
-      try {
-        return rpcClient.readContract({
-          abi: parseAbi(abi),
-          address: gameAddr as Address,
-          functionName: "nextBetAt",
-        })
-      } catch(e) {
-        console.log("NEXT BET AT FAILED", e)
-        return 0
-      }
+      return await rpcClient.readContract({
+        abi: parseAbi(abi),
+        address: gameAddr as Address,
+        functionName: "nextBetAt",
+      }) as string
     }
   })
 }
