@@ -16,8 +16,8 @@ export default function StatsPage() {
         <h2 className="font-bold mb-6">{GLOBAL_STATS}</h2>
 
         <div className="flex flex-col gap-3">
-          {mockGlobalStats.map((stat) => (
-            <div className="flex justify-between items-center ">
+          {mockGlobalStats.map((stat, idx) => (
+            <div className="flex justify-between items-center" key={`${idx}`}>
               <div className="text-[8px] lg:text-base text-gray-primary ">
                 {stat.label}
               </div>
