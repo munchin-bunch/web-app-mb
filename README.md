@@ -1,3 +1,15 @@
+## Install the Project
+
+First, run:
+
+```bash
+nvm use
+```
+
+```bash
+nvm install
+```
+
 ## Getting Started
 
 First, run the development server:
