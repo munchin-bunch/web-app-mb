@@ -7,7 +7,7 @@ nvm use
 ```
 
 ```bash
-nvm install
+npm install
 ```
 
 ## Getting Started
@@ -23,3 +23,7 @@ npm run dev
 
 - Tailwind
 - Radix for components
+
+## TODO
+
+[] Fix Toast animation

@@ -1,8 +1,9 @@
 import { ReactNode } from "react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { DesktopNavigation, TopBar } from "@/components";
-import AbsWalletWrapper from "@/components/AbsWalletWrapper";
+import AbsWalletWrapper from "@/providers/AbsWalletWrapper";
+import { ToastProvider } from "@/providers";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -23,6 +24,11 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,12 +38,14 @@ export default function RootLayout({
     <html lang="en">
       <AbsWalletWrapper>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased  min-h-screen flex flex-col px-40`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased  min-h-screen flex flex-col px-5 lg:px-30 `}
         >
-          <TopBar />
-          <DesktopNavigation />
-          <main className="flex-1">{children}</main>
-          <footer className="">Footer</footer>
+          <ToastProvider>
+            <TopBar />
+            <DesktopNavigation />
+            <main className="flex-1">{children}</main>
+            <footer className="">Footer</footer>
+          </ToastProvider>
         </body>
       </AbsWalletWrapper>
     </html>

@@ -1,10 +1,11 @@
-"use client"
+"use client";
 
 import { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./shared";
 import { GameDataModel } from "@/types";
+import clsx from "clsx";
 
 //TODO: add game type
 interface Props {
@@ -48,7 +49,7 @@ export function GameCard({ game, buttonActionLabel = "Check" }: Props) {
           alt="Panda NFT"
           width={120}
           height={120}
-          className="rounded-md"
+          className="rounded-md box-shadow-base"
         />
 
         <div className="flex-1 flex flex-col text-sm md:text-base gap-5">
@@ -75,7 +76,13 @@ export function GameCard({ game, buttonActionLabel = "Check" }: Props) {
             </span>
 
             <Link href={`/game/${game.id}`}>
-              <Button className="bg-blue-primary px-8 text-dark-primary font-bold hover:bg-blue-300 hover:text-white uppercase">
+              <Button
+                className={clsx(
+                  "bg-blue-primary px-4 text-dark-primary font-bold hover:bg-blue-300 hover:text-white uppercase",
+                  "text-xs",
+                  "lg:text-base lg:px-8"
+                )}
+              >
                 {buttonActionLabel}
               </Button>
             </Link>

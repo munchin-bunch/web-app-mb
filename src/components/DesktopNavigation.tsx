@@ -20,7 +20,8 @@ export function DesktopNavigation() {
           key={`navigation-tab-${tab.name}`}
           onClick={() => navigateTo(tab.href)}
           className={clsx(
-            "text-xl font-bold uppercase tracking-widest transition",
+            "text-xs font-bold uppercase tracking-widest transition",
+            "lg:text-xl",
             pathname === tab.href
               ? "text-white"
               : "text-gray-primary hover:text-white"
