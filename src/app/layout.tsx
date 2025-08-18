@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { DesktopNavigation, TopBar } from "@/components";
+import { DesktopNavigation, Footer, TopBar } from "@/components";
 import AbsWalletWrapper from "@/providers/AbsWalletWrapper";
 import { QueryProvider, ToastProvider } from "@/providers";
 import "./globals.css";
@@ -45,7 +45,7 @@ export default function RootLayout({
               <TopBar />
               <DesktopNavigation />
               <main className="flex-1">{children}</main>
-              <footer className="">Footer</footer>
+              <Footer />
             </ToastProvider>
           </body>
         </QueryProvider>

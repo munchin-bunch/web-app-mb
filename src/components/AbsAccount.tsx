@@ -36,9 +36,9 @@ export const AbsAccount = ({ children }: { children: ReactElement }) => {
       <span className="group ">
         <div
           onClick={disconnectWallet}
-          className="box-shadow-base  p-2 lg:mb-1.5 rounded-lg cursor-pointer group-hover:bg-gray-100"
+          className="box-shadow-base  p-2 lg:mb-1.5 rounded-lg cursor-pointer group-hover:bg-white group-active:bg-white group-focus:bg-white"
         >
-          <VscDebugDisconnect className="group-hover:text-pink-primary size-4 lg:size-5" />
+          <VscDebugDisconnect className="group-hover:text-pink-primary group-active:text-pink-primary group-focus:text-pink-primary size-4 lg:size-5" />
         </div>
       </span>
     </article>

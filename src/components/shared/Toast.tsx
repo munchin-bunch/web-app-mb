@@ -18,7 +18,7 @@ export const Toast = ({ title, description, duration }: ToastProps) => {
       duration={duration}
       className={clsx(
         "ToastRoot",
-        "bg-white shadow-lg rounded-xl p-2 lg:p-4 border border-pink-primary flex flex-col gap-1"
+        "bg-white shadow-lg rounded-lg py-2 px-4 lg:p-4 border border-pink-primary flex flex-col gap-1"
       )}
     >
       <RadixToast.Title className="text:xs lg:text-base font-semibold text-gray-900">

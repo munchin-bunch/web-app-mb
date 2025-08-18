@@ -1,12 +1,22 @@
+import clsx from "clsx";
 import { useEffect, useState } from "react";
 
 interface CountdownProps {
-  timestamp?: number,
-  className?: string
+  timestamp?: number;
+  className?: string;
 }
 
-export const Countdown = ({ timestamp = 0, className = '' }: CountdownProps) => {
-  const [timeRemaining, setTimeRemaining] = useState('');
+const timeEnd = (timeRemaining: string) => {
+  return timeRemaining === "00:00:00";
+};
+
+const FINISHED = "Finished";
+
+export const Countdown = ({
+  timestamp = 0,
+  className = "",
+}: CountdownProps) => {
+  const [timeRemaining, setTimeRemaining] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -14,7 +24,7 @@ export const Countdown = ({ timestamp = 0, className = '' }: CountdownProps) => 
       const difference = timestamp - now;
 
       if (difference <= 0) {
-        setTimeRemaining('00:00:00');
+        setTimeRemaining("00:00:00");
         clearInterval(interval);
         return;
       }
@@ -24,10 +34,10 @@ export const Countdown = ({ timestamp = 0, className = '' }: CountdownProps) => 
       const seconds = difference % 60;
 
       const formattedTime = [
-        hours.toString().padStart(2, '0'),
-        minutes.toString().padStart(2, '0'),
-        seconds.toString().padStart(2, '0'),
-      ].join(':');
+        hours.toString().padStart(2, "0"),
+        minutes.toString().padStart(2, "0"),
+        seconds.toString().padStart(2, "0"),
+      ].join(":");
 
       setTimeRemaining(formattedTime);
     }, 1000);
@@ -37,8 +47,8 @@ export const Countdown = ({ timestamp = 0, className = '' }: CountdownProps) => 
   }, [timestamp]);
 
   return (
-    <div className={className}>
-      {timeRemaining}
+    <div className={clsx(className, "uppercase")}>
+      {timeEnd(timeRemaining) ? FINISHED : timeRemaining}
     </div>
-  )
-}
+  );
+};
