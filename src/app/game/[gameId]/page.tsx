@@ -20,9 +20,10 @@ export default async function GamePage({ params }: GamePageProps) {
 
   return (
     <>
-      <GameBox gameId={gameId} />
-      <GameMeta gameId={gameId} />
-      <GameLeaderboard gameId={gameId} />
+      <GameBox gameAddr={gameId} />
+      {/* <GameMeta gameId={gameId} /> */}
+      <div className="h-4" />
+      <GameLeaderboard address={gameId} />
     </>
   );
 }

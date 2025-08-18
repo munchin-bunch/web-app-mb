@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import clsx from "clsx";
-import { GameApi, GameDataModel } from "@/types";
+import { GameApi } from "@/types";
 import { Button } from "./shared";
 
 //TODO: add game type
@@ -17,8 +17,7 @@ interface Props {
 const Label = ({ text, className }: { text: string; className?: string }) => {
   return (
     <span
-      className={`font-light tracking-wider text-white uppercase text-sm ${className}`}
-    >
+      className={`font-light tracking-wider text-white uppercase text-sm ${className}`}>
       {text}
     </span>
   );

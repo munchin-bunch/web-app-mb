@@ -3,14 +3,14 @@ import { Countdown } from "./Countdown"
 
 interface TimeRemainingProps {
   label?: string,
-  gameAddr?: string
+  gameAddr?: string,
+  nextBetAt: number,
 }
 
-export const Timer = ({ label, gameAddr }: TimeRemainingProps) => {
-  const { data = "0" } = useNextBetAt(gameAddr)
-  const nextBetAt = parseInt(data)
-
-  console.log("NEXT BET AT", nextBetAt)
+export const Timer = ({ label, nextBetAt = 0 }: TimeRemainingProps) => {
+  // const { data = "0" } = useNextBetAt(gameAddr)
+  // const nextBetAt = parseInt(data)
+  // console.log("NEXT BET AT", nextBetAt)
 
   return (
     <div className="flex gap-2">

@@ -1,5 +1,6 @@
 "use client";
 import {
+  useAbstractClient,
   useGlobalWalletSignerAccount,
   useLoginWithAbstract,
 } from "@abstract-foundation/agw-react";
@@ -7,11 +8,16 @@ import { shortAddr } from "@/utils/shortAddr";
 import { ReactElement, useState } from "react";
 import { VscDebugDisconnect } from "react-icons/vsc";
 import { useToast } from "@/hooks/useToast";
+import { useExplorer } from "@/hooks/useCurrentChain";
 
 export const AbsAccount = ({ children }: { children: ReactElement }) => {
   const { address, status } = useGlobalWalletSignerAccount();
+  const client = useAbstractClient()
   const { logout } = useLoginWithAbstract();
   const { addToast } = useToast();
+  const { toAddr } = useExplorer()
+
+  // console.log("CLIENT", client.data)
 
   function disconnectWallet() {
     logout();
@@ -28,16 +34,17 @@ export const AbsAccount = ({ children }: { children: ReactElement }) => {
   }
 
   return (
-    <article className=" flex gap-3 items-end ">
+    <article className="flex gap-3 items-end">
       <div className="text-xs lg:text-base bold font-bold text-pink-primary tracking-wider items-end">
+        <a href={toAddr(address)} target="_blank">
         {shortAddr(address)}
+        </a>
       </div>
 
-      <span className="group ">
+      <span className="group">
         <div
           onClick={disconnectWallet}
-          className="box-shadow-base  p-2 lg:mb-1.5 rounded-lg cursor-pointer group-hover:bg-gray-100"
-        >
+          className="box-shadow-base p-2 lg:mb-1.5 rounded-lg cursor-pointer group-hover:bg-gray-100">
           <VscDebugDisconnect className="group-hover:text-pink-primary size-4 lg:size-5" />
         </div>
       </span>

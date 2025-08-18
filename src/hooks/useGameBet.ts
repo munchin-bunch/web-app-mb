@@ -7,14 +7,14 @@ import { fromUsdt } from "@/utils/number"
 import abi from "@/abis/game.abi.json"
 
 export const useGameBet = (address?: string) => {
-  const client = createPublicClient({ chain, transport: http("") })
+  const client = createPublicClient({ chain, transport: http() })
 
   return useQuery({
     enabled: !!address,
     refetchOnMount: false,
     refetchOnReconnect: false,
     refetchOnWindowFocus: false,
-    queryKey: [`game-bet`],
+    queryKey: [`game-bet`, address],
     queryFn: async() => {
       try {
 
