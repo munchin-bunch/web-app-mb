@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { DesktopNavigation, TopBar } from "@/components";
 import AbsWalletWrapper from "@/providers/AbsWalletWrapper";
-import { ToastProvider } from "@/providers";
+import { QueryProvider, ToastProvider } from "@/providers";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -37,16 +37,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AbsWalletWrapper>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased  min-h-screen flex flex-col px-5 lg:px-30 `}
-        >
-          <ToastProvider>
-            <TopBar />
-            <DesktopNavigation />
-            <main className="flex-1">{children}</main>
-            <footer className="">Footer</footer>
-          </ToastProvider>
-        </body>
+        <QueryProvider>
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased  min-h-screen flex flex-col px-5 lg:px-30 `}
+          >
+            <ToastProvider>
+              <TopBar />
+              <DesktopNavigation />
+              <main className="flex-1">{children}</main>
+              <footer className="">Footer</footer>
+            </ToastProvider>
+          </body>
+        </QueryProvider>
       </AbsWalletWrapper>
     </html>
   );

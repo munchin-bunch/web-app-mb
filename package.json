@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "dev:lan": "next dev -H 0.0.0.0 -p 3000"
   },
   "dependencies": {
     "@abstract-foundation/agw-client": "^1.8.7",

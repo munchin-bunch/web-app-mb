@@ -26,4 +26,5 @@ npm run dev
 
 ## TODO
 
-[] Fix Toast animation
+[ ] Fix Toast animation.
+[ ] Update final responses types.

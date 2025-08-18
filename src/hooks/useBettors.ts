@@ -1,8 +1,9 @@
-"use client"
+"use client";
 
-import { useQuery } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query";
 // store.get(`@bettors-${gameAddr}`, [])
 
+//NOTE: do we need it?
 export const useBettors = (gameAddr?: string) => {
   // const [bettors, setBettors] = useState([])
 
@@ -11,10 +12,9 @@ export const useBettors = (gameAddr?: string) => {
     refetchOnMount: false,
     refetchOnReconnect: false,
     refetchOnWindowFocus: false,
-    queryFn: async() => {
+    queryFn: async () => {
       // get the last bettor id
       // get the bettor list
-    }
-  })
-
-}
+    },
+  });
+};
