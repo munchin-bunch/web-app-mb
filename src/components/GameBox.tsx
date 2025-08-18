@@ -5,12 +5,14 @@ import { LearnBox } from "./LearnBox"
 import { Timer } from "./Timer"
 import { useGameConfig } from "@/hooks/useGameConfig"
 import { fromUsdt } from "@/utils/number"
+import { useExplorer } from "@/hooks/useCurrentChain"
 
 interface GameBoxProps {
   gameAddr?: string,
 }
 
 export const GameBox = ({ gameAddr }: GameBoxProps) => {
+  const { toAddr } = useExplorer()
   const query = useGameConfig(gameAddr || '')
   const setting = query.data?.setting
   const config = query.data?.config
@@ -22,9 +24,11 @@ export const GameBox = ({ gameAddr }: GameBoxProps) => {
     <div className="border-1 border-pink-primary rounded-sm">
 
       <div className="flex bg-pink-primary py-2 px-4 text-black">
-        <div className="">
-          Game #{shortAddr(gameAddr)}
-        </div>
+        <a href={toAddr(gameAddr || '')} target="_blank">
+          <div className="font-bold">
+            Game #{shortAddr(gameAddr)}
+          </div>
+        </a>
         <div className="flex-grow" />
         <div className="text-right">RULES & REWARD DISTRIBUTION</div>
       </div>
@@ -52,10 +56,12 @@ export const GameBox = ({ gameAddr }: GameBoxProps) => {
           </div>
         </div>
       </div>
+
       <div className="flex justify-between px-4 flex-col md:flex-row">
         <LearnBox label="LEARN BEFORE YOU MUNCH" />
         <Timer label="TIME REMAINING:" nextBetAt={Number(config?.nextBetAt || '0')} />
       </div>
+
       <div className="p-4">
         <BetButton gameAddr={gameAddr} />
       </div>

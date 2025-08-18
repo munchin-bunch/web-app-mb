@@ -20,9 +20,9 @@ export default async function GamePage({ params }: GamePageProps) {
   return (
     <section className="flex flex-col gap-14">
       <GameBox gameAddr={gameId} />
-      {/* <GameMeta gameId={gameId} /> */}
-      <div className="h-4" />
       <GameLeaderboard address={gameId} />
     </section>
   );
 }
+
+// {/* <GameMeta gameId={gameId} /> */}
