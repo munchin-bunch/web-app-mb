@@ -38,7 +38,7 @@ export const GameMeta = ({ gameId: gameAddr }: GameMetaProps) => {
         <Box>
           <div>ENTRY TICKET</div>
           <div className="text-2xl font-bold text-blue-primary">
-            {data?.betAmount}
+            {data?.nextBetAmount}
           </div>
         </Box>
         <Box>

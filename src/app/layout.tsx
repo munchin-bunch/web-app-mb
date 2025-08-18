@@ -1,10 +1,11 @@
 import { ReactNode } from "react";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { DesktopNavigation, TopBar } from "@/components";
+import { DesktopNavigation, Footer, HomeFab, TopBar } from "@/components";
 import AbsWalletWrapper from "@/providers/AbsWalletWrapper";
 import { QueryProvider, ToastProvider } from "@/providers";
 import "./globals.css";
+import { DontShowOnPath } from "@/components/shared";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,10 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
+  const showHomeFab = () => {
+    return true;
+  };
+
   return (
     <html lang="en">
       <AbsWalletWrapper>
@@ -45,7 +50,11 @@ export default function RootLayout({
               <TopBar />
               <DesktopNavigation />
               <main className="flex-1">{children}</main>
-              <footer className="">Footer</footer>
+              <Footer />
+
+              <DontShowOnPath path="/current-games">
+                <HomeFab />
+              </DontShowOnPath>
             </ToastProvider>
           </body>
         </QueryProvider>

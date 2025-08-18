@@ -3,9 +3,10 @@
 import { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import clsx from "clsx";
 import { GameApi } from "@/types";
-import { Button } from "./shared";
+import { shortAddr } from "@/utils";
+import { Countdown } from "./Countdown";
+import { BlueActionButton } from "./shared";
 
 //TODO: add game type
 interface Props {
@@ -35,64 +36,56 @@ const GameDetailColumn = ({ children }: { children: ReactNode }) => {
   return <span className="flex flex-col">{children}</span>;
 };
 
-export function GameCard({
+export const GameCard = ({
   game,
   gameIndex,
   buttonActionLabel = "Check",
-}: Props) {
+}: Props) => {
   return (
     <article className="bg-dark-primary border-2 border-pink-primary rounded-lg overflow-hidden mb-6">
       <div className="flex justify-between items-center px-4 py-4 bg-pink-primary text-xs font-bold text-dark-primary tracking-widest uppercase">
         <span>Game #{gameIndex}</span>
-        <span>#{game.id}</span>
+        <span>#{shortAddr(game.address, 4, 4)}</span>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-4 p-4 items-center md:items-start">
+      <div className="flex gap-4 p-4 items-center md:items-start">
         <Image
-          src={game.image ?? "/nft-1.jpg"}
+          src={game.image ?? "/logo.jpg"}
           alt="Panda NFT"
           width={120}
           height={120}
-          className="rounded-md box-shadow-base"
+          className="rounded-md box-shadow-base self-start"
         />
 
         <div className="flex-1 flex flex-col text-sm md:text-base gap-5">
-          <div className="flex items-center">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center">
             <Label text={"Main Prize:"} className="mr-2" />
-            <LabelValue text={`${game.prize.winner}`} />
+            <LabelValue text={`${game.prize?.winner ?? 0}`} />
           </div>
-          <div className="flex items-center justify-between">
-            <span className="flex items-center justify-between gap-6">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-10 lg:gap-0 lg:justify-between">
+            <span className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
               <GameDetailColumn>
                 <Label text={"Entry Ticket"} />
-                <LabelValue text={"000 USDT"} />
+                <LabelValue text={"100 USDT"} />
               </GameDetailColumn>
 
               <GameDetailColumn>
                 <Label text={"Current Pool"} />
-                <LabelValue text={`${game.prize_pool} USDT`} />
+                <LabelValue text={`${game.prize_pool ?? 0} USDT`} />
               </GameDetailColumn>
 
               <GameDetailColumn>
                 <Label text={"Time Remaining"} />
-                <LabelValue text={"00000"} />
+                <Countdown className="text-xl font-extrabold text-blue-primary" />
               </GameDetailColumn>
             </span>
 
             <Link href={`/game/${game.address}`}>
-              <Button
-                className={clsx(
-                  "bg-blue-primary px-4 text-dark-primary font-bold hover:bg-blue-300 hover:text-white uppercase",
-                  "text-xs",
-                  "lg:text-base lg:px-8"
-                )}
-              >
-                {buttonActionLabel}
-              </Button>
+              <BlueActionButton buttonActionLabel={buttonActionLabel} />
             </Link>
           </div>
         </div>
       </div>
     </article>
   );
-}
+};

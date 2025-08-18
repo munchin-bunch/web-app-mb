@@ -16,11 +16,11 @@ export const GameBox = ({ gameAddr }: GameBoxProps) => {
   const config = query.data?.config
   const prize = query.data?.prize
   const betAmount = query.data?.betAmount
-
   // console.log("CONFIG", query.data)
 
   return (
     <div className="border-1 border-pink-primary rounded-sm">
+
       <div className="flex bg-pink-primary py-2 px-4 text-black">
         <div className="">
           Game #{shortAddr(gameAddr)}
@@ -28,13 +28,14 @@ export const GameBox = ({ gameAddr }: GameBoxProps) => {
         <div className="flex-grow" />
         <div className="text-right">RULES & REWARD DISTRIBUTION</div>
       </div>
+
       <div className="p-4">
         <div className="flex gap-3 flex-col md:flex-row">
           <div className="relative">
             <img className="max-w-[200px] justify-self-center-safe md:max-w-[140px] border-1 border-pink-500" src="/nft-1.jpg" />
           </div>
           <div className="flex-grow flex flex-col gap-3">
-            <div className="h-full border-1 border-pink-primary place-content-center p-2">
+            <div className="w-full">
               <div className="text-xs">MAIN PRIZE:</div>
               <div className="text-blue-primary font-bold">{fromUsdt(setting?.initPrize || 0)} USDT</div>
             </div>
@@ -61,8 +62,3 @@ export const GameBox = ({ gameAddr }: GameBoxProps) => {
     </div>
   )
 }
-
-// <div>TIME REMAINING: {bet?.nextBetAt}</div>
-// const gameAddr = "0xbc017649a57f29329c8d401ac3529edf29da2766"
-// const { data: setting } = useGameSetting("0xbc017649a57f29329c8d401ac3529edf29da2766")
-// const { data: bet } = useGameBet(gameAddr)

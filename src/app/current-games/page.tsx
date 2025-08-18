@@ -6,7 +6,10 @@ const GAME_CARD_ACTION_BTN_LABEL = "Let's Munch It";
 
 export default async function CurrentGamesPage() {
   const games = await fetchGamesList();
-  // console.log("games :", games);
+  console.log("games :", games);
+
+  if (!games) return;
+
   return (
     <>
       {games.map((game, idx) => (
