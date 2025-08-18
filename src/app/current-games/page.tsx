@@ -1,6 +1,5 @@
 import { fetchGamesList } from "@/api/handlers";
 import { GameCard } from "@/components";
-import { mockCurrentGames } from "@/mocks";
 
 const GAME_CARD_ACTION_BTN_LABEL = "Let's Munch It";
 

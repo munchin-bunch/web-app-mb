@@ -35,9 +35,9 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
-  const showHomeFab = () => {
-    return true;
-  };
+  // const showHomeFab = () => {
+  //   return true;
+  // };
 
   return (
     <html lang="en">

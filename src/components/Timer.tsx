@@ -1,4 +1,3 @@
-import { useNextBetAt } from "@/hooks/useNextBetAt";
 import { Countdown } from "./Countdown";
 
 interface TimeRemainingProps {

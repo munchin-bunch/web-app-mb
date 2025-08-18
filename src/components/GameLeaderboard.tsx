@@ -1,7 +1,6 @@
 "use client"
 import { shortAddr } from "@/utils/shortAddr"
 import { Table } from "./shared/Table"
-import { useGamePositions } from "@/hooks/useGamePositions"
 import { useGameEarners } from "@/hooks/useGameEarners"
 
 interface GameLeaderboardProps {

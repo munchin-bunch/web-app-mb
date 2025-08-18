@@ -7,24 +7,15 @@ import { fromUsdt } from "@/utils/number";
 import abi from "@/abis/game.abi.json";
 
 export const useGameBet = (address?: string) => {
-<<<<<<< HEAD
   const client = createPublicClient({ chain, transport: http() })
-=======
-  const client = createPublicClient({ chain, transport: http("") });
->>>>>>> f92b62ffea056748f81f784427a743ce84809654
 
   return useQuery({
     enabled: !!address,
     refetchOnMount: false,
     refetchOnReconnect: false,
     refetchOnWindowFocus: false,
-<<<<<<< HEAD
     queryKey: [`game-bet`, address],
     queryFn: async() => {
-=======
-    queryKey: [`game-bet`],
-    queryFn: async () => {
->>>>>>> f92b62ffea056748f81f784427a743ce84809654
       try {
         const contractConfig = {
           address: address as Address,

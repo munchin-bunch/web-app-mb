@@ -10,7 +10,6 @@ export const useUsd = (usdAddr: string | Address) => {
 
   const approve = useMutation({
     mutationKey: [`usd-approve`],
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     mutationFn: async({ spender, amount }: any) => {
 
       console.log("BET AMOUNT", spender, amount)

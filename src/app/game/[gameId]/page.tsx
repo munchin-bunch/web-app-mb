@@ -5,7 +5,7 @@ import { GameLeaderboard } from "@/components/GameLeaderboard";
 export async function generateStaticParams() {
   const games = await fetchGamesList();
 
-  return games.map((game, idx) => ({
+  return games.map((game) => ({
     gameId: game.address,
   }));
 }

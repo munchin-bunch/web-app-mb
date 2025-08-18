@@ -20,7 +20,8 @@ export const BlueActionButton = ({
           "bg-blue-primary px-6 text-xs lg:text-base text-dark-primary font-bold e uppercase",
           "md:hover:bg-blue-primary md:hover:text-whit",
           "active:bg-blue-primary active:text-white",
-          "focus:blue-primary focus:text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50"
+          "focus:blue-primary focus:text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50",
+          className
         )}
       >
         {buttonActionLabel}

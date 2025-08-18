@@ -1,18 +1,16 @@
 "use client";
 import {
-  useAbstractClient,
   useGlobalWalletSignerAccount,
   useLoginWithAbstract,
 } from "@abstract-foundation/agw-react";
 import { shortAddr } from "@/utils/shortAddr";
-import { ReactElement, useState } from "react";
+import { ReactElement } from "react";
 import { VscDebugDisconnect } from "react-icons/vsc";
 import { useToast } from "@/hooks/useToast";
 import { useExplorer } from "@/hooks/useCurrentChain";
 
 export const AbsAccount = ({ children }: { children: ReactElement }) => {
   const { address, status } = useGlobalWalletSignerAccount();
-  const client = useAbstractClient()
   const { logout } = useLoginWithAbstract();
   const { addToast } = useToast();
   const { toAddr } = useExplorer()
