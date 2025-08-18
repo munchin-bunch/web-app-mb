@@ -84,18 +84,6 @@ export const GameCard = ({
 
             <Link href={`/game/${game.address}`}>
               <BlueActionButton buttonActionLabel={buttonActionLabel} />
-              {/* <Button
-                className={clsx(
-                  "bg-blue-primary px-8 text-dark-primary font-bold e uppercase",
-                  "md:hover:bg-blue-primary md:hover:text-whit",
-                  "active:bg-blue-primary active:text-white",
-                  "focus:blue-primary focus:text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50",
-                  "text-xs",
-                  "lg:text-base lg:px-8"
-                )}
-              >
-                {buttonActionLabel}
-              </Button> */}
             </Link>
           </div>
         </div>

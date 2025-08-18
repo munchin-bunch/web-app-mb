@@ -1,6 +1,6 @@
 "use client";
 
-import { BlueActionButton, Button } from "./shared";
+import { BlueActionButton } from "./shared";
 import { useLoginWithAbstract } from "@abstract-foundation/agw-react";
 
 const CONNECT_WALLET = " Connect Wallet";

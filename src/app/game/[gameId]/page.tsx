@@ -19,10 +19,10 @@ export default async function GamePage({ params }: GamePageProps) {
   const { gameId } = await params;
 
   return (
-    <>
+    <section className="flex flex-col gap-14">
       <GameBox gameId={gameId} />
-      <GameMeta gameId={gameId} />
+      {/* <GameMeta gameId={gameId} /> */}
       <GameLeaderboard gameId={gameId} />
-    </>
+    </section>
   );
 }
