@@ -62,7 +62,7 @@ export const GameCard = ({
         <div className="flex-1 flex flex-col text-sm md:text-base gap-5">
           <div className="flex flex-col lg:flex-row items-start lg:items-center">
             <Label text={"Main Prize:"} className="mr-2" />
-            <LabelValue text={`${game.prize.winner}`} />
+            <LabelValue text={`${game.prize?.winner ?? 0}`} />
           </div>
           <div className="flex flex-col lg:flex-row items-start lg:items-center gap-10 lg:gap-0 lg:justify-between">
             <span className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
@@ -73,7 +73,7 @@ export const GameCard = ({
 
               <GameDetailColumn>
                 <Label text={"Current Pool"} />
-                <LabelValue text={`${game.prize_pool} USDT`} />
+                <LabelValue text={`${game.prize_pool ?? 0} USDT`} />
               </GameDetailColumn>
 
               <GameDetailColumn>
