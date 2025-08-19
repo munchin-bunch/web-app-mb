@@ -26,11 +26,11 @@ export const GameBox = ({ gameAddr }: GameBoxProps) => {
       <div className="flex bg-pink-primary py-2 px-4 text-black">
         <a href={toAddr(gameAddr || '')} target="_blank">
           <div className="font-bold">
-            Game #{shortAddr(gameAddr)}
+            GAME #{shortAddr(gameAddr)}
           </div>
         </a>
         <div className="flex-grow" />
-        <div className="text-right">RULES & REWARD DISTRIBUTION</div>
+        <div className="text-right font-bold">RULES & REWARD DISTRIBUTION</div>
       </div>
 
       <div className="p-4">
@@ -44,11 +44,11 @@ export const GameBox = ({ gameAddr }: GameBoxProps) => {
               <div className="text-blue-primary font-bold">{fromUsdt(setting?.initPrize || 0)} USDT</div>
             </div>
             <div className="flex h-full gap-3">
-              <div className="border-1 border-pink-primary place-content-center w-full p-2">
+              <div className="border-1 border-pink-primary place-content-center w-full p-2 px-3">
                 <div className="text-xs">CURRENT POOL:</div>
                 <div className="text-blue-primary font-bold">{fromUsdt(prize?.prizePool || 0)} USDT</div>
               </div>
-              <div className="border-1 border-pink-primary place-content-center w-full p-2">
+              <div className="border-1 border-pink-primary place-content-center w-full p-2 px-3">
                 <div className="text-xs">ENTRY TICKET:</div>
                 <div className="text-blue-primary font-bold">{fromUsdt(betAmount || 0)} USDT</div>
               </div>              
@@ -59,7 +59,7 @@ export const GameBox = ({ gameAddr }: GameBoxProps) => {
 
       <div className="flex justify-between px-4 flex-col md:flex-row">
         <LearnBox label="LEARN BEFORE YOU MUNCH" />
-        <Timer label="TIME REMAINING:" nextBetAt={Number(config?.nextBetAt || '0')} />
+        <Timer label="TIME REMAINING:" timestamp={Number(setting?.endTime || '0')} />
       </div>
 
       <div className="p-4">

@@ -3,13 +3,15 @@
 import { useAbstractClient } from "@abstract-foundation/agw-react"
 import { createPublicClient, http, webSocket } from "viem"
 import { abstract, abstractTestnet } from "viem/chains"
+import store from 'store'
 
 const WS_ABS_TEST_URL = `wss://api.testnet.abs.xyz/ws`
 const WS_ABS_URL = `wss://api.mainnet.abs.xyz/ws`
 
+const isTestnet = store.get('@testnet', true)
+
 export const useChain = () => {
-  const client = useAbstractClient()
-  return client.data?.chain
+  return isTestnet ? abstractTestnet : abstract
 }
 
 export const useClient = () => {
@@ -18,9 +20,9 @@ export const useClient = () => {
 
   return {
     url,
-    chain: chain?.id === 11124 ? abstractTestnet : abstract,
-    client: chain && createPublicClient({ chain, transport: http() }),
-    wsClient: chain && createPublicClient({ chain, transport: webSocket(url) })
+    chain,
+    client: createPublicClient({ chain, transport: http() }),
+    wsClient: createPublicClient({ chain, transport: webSocket(url) })
   }
 }
 
@@ -32,3 +34,7 @@ export const useExplorer = () => {
     toTx: (tx: string) => `${chain?.blockExplorers?.default.url}/tx/${tx}`,
   }
 }
+
+// chain: chain?.id === 11124 ? abstractTestnet : abstract,
+// const client = useAbstractClient()
+// return client.data?.chain || 
