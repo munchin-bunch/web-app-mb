@@ -7,6 +7,7 @@ import { GameApi } from "@/types";
 import { shortAddr } from "@/utils";
 import { Countdown } from "./Countdown";
 import { BlueActionButton } from "./shared";
+import { fromUsdt } from "@/utils/number";
 
 //TODO: add game type
 interface Props {
@@ -41,8 +42,12 @@ export const GameCard = ({
   gameIndex,
   buttonActionLabel = "Check",
 }: Props) => {
+
+  const mainPrize = fromUsdt(BigInt(game.setting?.initPrize))
+
   return (
     <article className="bg-dark-primary border-2 border-pink-primary rounded-lg overflow-hidden mb-6">
+
       <div className="flex justify-between items-center px-4 py-4 bg-pink-primary text-xs font-bold text-dark-primary tracking-widest uppercase">
         <span>Game #{gameIndex}</span>
         <span>#{shortAddr(game.address, 4, 4)}</span>
@@ -60,7 +65,7 @@ export const GameCard = ({
         <div className="flex-1 flex flex-col text-sm md:text-base gap-5">
           <div className="flex flex-col lg:flex-row items-start lg:items-center">
             <Label text={"Main Prize:"} className="mr-2" />
-            <LabelValue text={`${game.prize?.winner ?? 0}`} />
+            <LabelValue text={`${mainPrize ?? 0} USDT`} />
           </div>
           <div className="flex flex-col lg:flex-row items-start lg:items-center gap-10 lg:gap-0 lg:justify-between">
             <span className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
@@ -76,7 +81,7 @@ export const GameCard = ({
 
               <GameDetailColumn>
                 <Label text={"Time Remaining"} />
-                <Countdown className="text-xl font-extrabold text-blue-primary" />
+                <Countdown className="text-xl font-extrabold text-blue-primary" timestamp={game.setting.endTime} />
               </GameDetailColumn>
             </span>
 
