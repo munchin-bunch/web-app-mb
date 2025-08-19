@@ -1,6 +1,7 @@
 "use client"
 import { Button } from "./shared"
 import { useBet } from "@/hooks/useBet"
+import { usePlayerActions } from "@/hooks/usePlayerActions"
 import { zeroAddress } from "viem"
 
 interface BetButtonProps {
@@ -9,8 +10,12 @@ interface BetButtonProps {
 
 export const BetButton = ({ gameAddr }: BetButtonProps) => {
   const { bet } = useBet(gameAddr || '')
+  const { add } = usePlayerActions()
 
-  const handleBet = () => bet.mutate({ nftId: 0, refAddr: zeroAddress })
+  const handleBet = () => {
+    add.mutate() // add the player/bettor to api
+    bet.mutate({ nftId: 0, refAddr: zeroAddress }) // 
+  }
 
   return (
     <>

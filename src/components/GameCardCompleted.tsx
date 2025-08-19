@@ -37,7 +37,7 @@ const GameDetailColumn = ({ children }: { children: ReactNode }) => {
   return <span className="flex flex-col">{children}</span>;
 };
 
-export const GameCard = ({
+export const GameCardCompleted = ({
   game,
   gameIndex,
   buttonActionLabel = "Check",
@@ -65,7 +65,7 @@ export const GameCard = ({
         <div className="flex-1 flex flex-col text-sm md:text-base gap-5">
           <div className="flex flex-col lg:flex-row items-start lg:items-center">
             <Label text={"Main Prize:"} className="mr-2" />
-            <LabelValue text={game?.name ? `${game?.name}` : `${mainPrize ?? 0} USDT`} />
+            <LabelValue text={`${mainPrize ?? 0} USDT`} />
           </div>
           <div className="flex flex-col lg:flex-row items-start lg:items-center gap-10 lg:gap-0 lg:justify-between">
             <span className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
@@ -81,7 +81,7 @@ export const GameCard = ({
 
               <GameDetailColumn>
                 <Label text={"Time Remaining"} />
-                <Countdown className="text-xl font-extrabold text-blue-primary" timestamp={game?.completed ? 0 : game.setting.endTime} />
+                <Countdown className="text-xl font-extrabold text-blue-primary" timestamp={game.setting.endTime} />
               </GameDetailColumn>
             </span>
 
