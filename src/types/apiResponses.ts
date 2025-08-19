@@ -80,4 +80,5 @@ export interface GameApi {
   end_time: number;
   total_bets: number;
   last_bettor: string;
+  completed: boolean;
 }
